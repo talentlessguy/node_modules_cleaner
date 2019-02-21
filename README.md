@@ -6,7 +6,7 @@ Cleans node_modules from non code files (e.g. README.md).
 
 | Package Name | `node_modules` before | `node_modules` after |
 |--------------|----------------------|-----------------------|
-| koa@2.7 | 771.52 Kb | 434.93 |
+| koa@2.7 | 771.52 Kb | 434.93 Kb |
 | express@4.16.4 | 1578.21 Kb | 973.74 Kb |
 | fs-extra@7.0.1 | 171.54 Kb | 79.77 Kb |
 
@@ -65,7 +65,8 @@ __and some more in the future...__
 
 ## TODO
 
-- [x] Create & publish nm_clean
+- [x] Create nm_clean
 - [x] Also remove directories
+- [ ] Publish the package
 - [ ] Create plugin for Gulp & Webpack
 - [ ] Add more file extensions

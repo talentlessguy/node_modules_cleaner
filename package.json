@@ -1,0 +1,24 @@
+{
+  "name": "node_modules_cleaner",
+  "version": "1.0.0",
+  "description": "Cleans node_modules from non code files.",
+  "main": "index.js",
+  "scripts": {
+    "test": "./nm_clean.js demo"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/talentlessguy/node_modules_cleaner.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/talentlessguy/node_modules_cleaner/issues"
+  },
+  "homepage": "https://github.com/talentlessguy/node_modules_cleaner#readme",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "recursive-readdir-sync": "^1.0.6"
+  }
+}

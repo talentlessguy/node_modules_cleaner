@@ -1,6 +1,4 @@
-#!/usr/bin/env node
-
-const { unlinkSync, statSync } = require('fs')
+const { unlinkSync, statSync, existsSync } = require('fs')
 const readdir = require('recursive-readdir-sync')
 const { cyan, red } = require('chalk')
 const { log, error } = console
@@ -16,16 +14,19 @@ if (process.argv.length <= 2) {
     `))
 } else {
     process.chdir(process.argv[2])
-    try {
-        const files = readdir('./node_modules')
-    } catch (e) {
+
+    // Check if node_modules exists
+    if (!existsSync('./node_modules')) {
         error(
             red(`
         node_modules directory can't be found.
         Please run npm i in your project.
             `)
         )
+        process.exit()
     }
+
+    const files = readdir('./node_modules')
     const trash = files.filter(file => regex.test(file))
 
     // Calculate size of each file

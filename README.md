@@ -27,14 +27,16 @@ nm_clean <project_folder>
 
 ## Demo
 
-Switch to `demo` folder. Then run `npm i`. Then return back to root directory and run `node nm_clean demo`.
-
-Quick commands:
-
 ```sh
-cd demos
-cd koa && npm i && cd ../
-node nm_clean.js
+
+# Koa
+npm run test:koa
+
+# Express
+npm run test:express
+
+# FS Extra
+npm run test:fs-extra
 ```
 
 Demo uses `koa`, `express` and `fs-extra` packages for demonstration.

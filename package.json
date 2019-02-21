@@ -2,11 +2,11 @@
   "name": "node_modules_cleaner",
   "version": "1.0.0",
   "description": "Cleans node_modules from non code files.",
-  "main": "./nm_clean.js",
+  "main": "nm_clean.js",
   "scripts": {
     "test:koa": "node ./nm_clean.js demos/koa && node demos/koa/server",
     "test:express": "node ./nm_clean.js demos/express && node demos/express/server",
-    "test:fs-extra": "node ./nm_clean.js demos/fs-extra && node demos/express/index"
+    "test:fs-extra": "node ./nm_clean.js demos/fs-extra && node demos/express/server"
   },
   "repository": {
     "type": "git",

@@ -67,6 +67,6 @@ __and some more in the future...__
 
 ## TODO
 
-[x] Create & publish nm_clean
-[ ] Create plugin for Gulp & Webpack
-[ ] Add more file extensions
+- [x] Create & publish nm_clean
+- [ ] Create plugin for Gulp & Webpack
+- [ ] Add more file extensions

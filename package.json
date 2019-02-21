@@ -7,9 +7,9 @@
     "nm_clean": "./nm_clean.js"
   },
   "scripts": {
-    "test:koa": "node ./nm_clean.js demos/koa && node demos/koa/server",
-    "test:express": "node ./nm_clean.js demos/express && node demos/express/server",
-    "test:fs-extra": "node ./nm_clean.js demos/fs-extra && node demos/express/server"
+    "test:koa": "cd demos/koa && npm i & nm_clean ./ && node server",
+    "test:express": "cd demos/express && npm i & nm_clean ./ && node server",
+    "test:fs-extra": "cd demos/fs-extra && npm i && nm_clean ./ && node index"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,6 @@
   "homepage": "https://github.com/talentlessguy/node_modules_cleaner#readme",
   "dependencies": {
     "chalk": "^2.4.2",
-    "recursive-readdir-sync": "^1.0.6"
+    "nodejs-fs-utils": "^1.1.2"
   }
 }

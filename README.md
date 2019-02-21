@@ -6,9 +6,9 @@ Cleans node_modules from non code files (e.g. README.md).
 
 | Package Name | `node_modules` before | `node_modules` after |
 |--------------|----------------------|-----------------------|
-| koa@2.7 | 771.52 Kb | 464.95 Kb |
-| express@4.16.4 | 1578.21 Kb | 1051.03 Kb |
-| fs-extra@7.0.1 | 171.54 Kb | 79.78 Kb |
+| koa@2.7 | 771.52 Kb | 434.93 |
+| express@4.16.4 | 1578.21 Kb | 973.74 Kb |
+| fs-extra@7.0.1 | 171.54 Kb | 79.77 Kb |
 
 ## Installation
 
@@ -51,22 +51,21 @@ Demo uses `koa`, `express` and `fs-extra` packages for demonstration.
 
 **nm_clean** goes recursively through node_modules, then picks unnessesary files and deletes them. Yes, so simple.
 
-## Supported extensions
+## Supported extensions & directories
 
-.md
-.doc
-.bashrc
-.eslintrc
-.babelrc
-.yml
-.conf.js
-.editorconfig
-.eslintignore
+* Markdown files
+* License files
+* Every file ending with 'rc'
+* Config & ignore files
+* Makefile
+* Tests and example directories
+* YAML files, for example travis.yml
 
 __and some more in the future...__
 
 ## TODO
 
 - [x] Create & publish nm_clean
+- [x] Also remove directories
 - [ ] Create plugin for Gulp & Webpack
 - [ ] Add more file extensions

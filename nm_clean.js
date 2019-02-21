@@ -1,48 +1,56 @@
 #!/usr/bin/env node
 
-const { unlinkSync, statSync, existsSync } = require('fs')
-const readdir = require('recursive-readdir-sync')
-const { cyan, red } = require('chalk')
+const { cyan, yellow } = require('chalk')
+const { existsSync, unlinkSync } = require('fs')
+const { fsizeSync, walkSync, rmdirsSync } = require('nodejs-fs-utils')
 const { log, error } = console
+const { chdir, exit, argv } = process
 
-const regex = /(LICENSE|Makefile)|(\.(md|doc|bashrc|eslintrc|babelrc|yml|conf.js|editorconfig|eslintignore|))$/i
+const dir = argv[2]
+let isSilent = true
 
-const getSize = file => statSync(file).size / 1024
+if (argv[3] === '-p') isSilent = false
+
+const dirSize = () => (fsizeSync('./') / 1024).toFixed(2)
+
+const regex = /(LICENSE|Makefile|tests?|__tests?__|examples?)|(\.(md|doc|ya?ml|conf.js|config|markdown|nvmrc|config.js|eslintrc.json|flow)|rc|ignore|config)$/i
 
 if (process.argv.length <= 2) {
     log(`
-    Usage:`,
-    cyan(`nm_clean <project>`)
-    )
-} else {
-    process.chdir(process.argv[2])
+    Usage: ${cyan('nm_clean <directory>')}
 
-    // Check if node_modules exists
-    if (!existsSync('./node_modules')) {
+    Arguments:
+
+    nm_clean <directory> -p - Displays deletion process.
+    `)
+} else {
+    if (!existsSync(`${dir}/node_modules`)) {
         error(
-            red(`
+            yellow(`
         node_modules directory can't be found.
         Please run ${cyan('npm i')} in your project.
+        
             `)
         )
-        process.exit()
+        exit()
     }
+    
+    chdir(`${dir}/node_modules`)
+    
+    log(`Before: ${yellow(dirSize())} Kb`)
 
-    const files = readdir('./node_modules')
-    const trash = files.filter(file => regex.test(file))
-
-    // Calculate size of each file
-    let oldSize = 0
-    files.map(file => oldSize += getSize(file))
-    log(`Before: ${red(oldSize.toFixed(2))} Kb`)
-
-    // Clean from trash
-    trash.map(file => unlinkSync(file))
-
-    // Recalculate sizes
-    const cleaned = readdir('./node_modules')
-    let newSize = 0
-    cleaned.map(file => newSize += getSize(file))
-
-    log(`After: ${cyan(newSize.toFixed(2))} Kb`)
+    walkSync('./', {
+        skipErrors: false,
+        logErrors: false,
+        stackPushEnd: true
+    }, (err, path, stats, next) => {
+            if (!err && regex.test(path)) {
+                isSilent ? null : log(path)
+                stats.isDirectory() ? rmdirsSync(path) : unlinkSync(path)
+            } else {
+                next()
+            }
+        })
+    
+    log(`After: ${cyan(dirSize())} Kb`)
 }

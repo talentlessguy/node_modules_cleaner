@@ -1,5 +1,3 @@
-const { outputFileSync } = require('fs-extra')
+const { readJSONSync } = require('fs-extra')
 
-process.chdir('demos/fs-extra')
-
-outputFileSync('file.txt', 'Hello World!')
+console.log(readJSONSync('./package.json'))

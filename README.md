@@ -13,8 +13,8 @@ Cleans node_modules from non code files (e.g. README.md).
 ## Installation
 
 Tested on versions:
-| npm | 6.4.1 |
-| node | 11.4.0 |
+npm: 6.4.1
+node: 11.4.0
 
 I'm not sure if nm_clean works on older versions, so please update to latest or use these versions.
 
@@ -56,7 +56,7 @@ Demo uses `koa`, `express` and `fs-extra` packages for demonstration.
 * Markdown files
 * License files
 * Every file ending with 'rc'
-* Config & ignore files
+* 'Config' & 'ignore' files
 * Makefile
 * Tests and example directories
 * YAML files, for example travis.yml

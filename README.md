@@ -9,6 +9,7 @@ Cleans node_modules from non code files (e.g. README.md).
 | Package Name | `node_modules` before | `node_modules` after |
 |--------------|----------------------|-----------------------|
 |create-react-app@2.1.5 | 101 Mb | 98 Mb |
+| koa@2.7 | 772 Kb | 720 Kb |
 
 ## Installation
 
@@ -68,5 +69,5 @@ __and some more in the future...__
 - [x] Create nm_clean
 - [x] Also remove directories
 - [ ] Publish the package
-- [ ] Create plugin for Gulp & Webpack
+- [ ] Create plugin for Gulp
 - [ ] Add more file extensions

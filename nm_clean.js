@@ -11,9 +11,9 @@ let isSilent = true
 
 if (argv[3] === '-p') isSilent = false
 
-const dirSize = () => (fsizeSync('./') / 1024).toFixed(2)
+const dirSize = () => parseInt(fsizeSync('./') / 1024)
 
-const regex = /(LICENSE|Makefile|tests?|__tests?__|examples?)|(\.(md|doc|ya?ml|conf.js|config|markdown|nvmrc|config.js|eslintrc.json|flow)|rc|ignore|config)$/i
+const regex = /((LICEN(C|S)E|Makefile|tests?|__tests?__|AUTHORS)|(\.(bash|eslint|vim)rc)|(\.(eslint|npm)ignore)|(\.editorconfig))$/i
 
 if (process.argv.length <= 2) {
     log(`
@@ -29,7 +29,6 @@ if (process.argv.length <= 2) {
             yellow(`
         node_modules directory can't be found.
         Please run ${cyan('npm i')} in your project.
-        
             `)
         )
         exit()
@@ -37,7 +36,7 @@ if (process.argv.length <= 2) {
     
     chdir(`${dir}/node_modules`)
     
-    log(`Before: ${yellow(dirSize())} Kb`)
+    log(dirSize() > 10000 ? `Before: ${yellow(parseInt(dirSize() / 1024))} Mb` : `Before: ${yellow(dirSize())} Kb`) 
 
     walkSync('./', {
         skipErrors: false,
@@ -45,12 +44,12 @@ if (process.argv.length <= 2) {
         stackPushEnd: true
     }, (err, path, stats, next) => {
             if (!err && regex.test(path)) {
-                isSilent ? null : log(path)
+                isSilent ? null : log(`Deleting ${path}...`)
                 stats.isDirectory() ? rmdirsSync(path) : unlinkSync(path)
             } else {
                 next()
             }
         })
     
-    log(`After: ${cyan(dirSize())} Kb`)
+        log(dirSize() > 10000 ? `After: ${yellow(parseInt(dirSize() / 1024))} Mb` : `After: ${yellow(dirSize())} Kb`)
 }

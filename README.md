@@ -2,13 +2,13 @@
 
 Cleans node_modules from non code files (e.g. README.md).
 
+[WARNING] This utility is unstable and not production-ready.
+
 ## Cleaning Results
 
 | Package Name | `node_modules` before | `node_modules` after |
 |--------------|----------------------|-----------------------|
-| koa@2.7 | 771.52 Kb | 434.93 Kb |
-| express@4.16.4 | 1578.21 Kb | 973.74 Kb |
-| fs-extra@7.0.1 | 171.54 Kb | 79.77 Kb |
+|create-react-app@2.1.5 | 101 Mb | 98 Mb |
 
 ## Installation
 
@@ -56,7 +56,7 @@ Demo uses `koa`, `express` and `fs-extra` packages for demonstration.
 * Markdown files
 * License files
 * Every file ending with 'rc'
-* 'Config' & 'ignore' files
+* 'ignore' files
 * Makefile
 * Tests and example directories
 * YAML files, for example travis.yml

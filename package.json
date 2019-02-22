@@ -6,11 +6,6 @@
   "bin": {
     "nm_clean": "./nm_clean.js"
   },
-  "scripts": {
-    "test:koa": "cd demos/koa && npm i & nm_clean ./ && node server",
-    "test:express": "cd demos/express && npm i & nm_clean ./ && node server",
-    "test:fs-extra": "cd demos/fs-extra && npm i && nm_clean ./ && node index"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/talentlessguy/node_modules_cleaner.git"

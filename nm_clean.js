@@ -22,8 +22,8 @@ const dirSize = () => {
 }
 
 // Decided to separate regexps not to get confused
-const regexf = /(LICENSE|Makefile|tests?|__tests?__|AUTHORS?|karma.conf.js)$/i
-const regexe = /\.((bash|eslint|vim|jshint|nvm)rc|(eslint|npm)ignore|editorconfig|md|ya?ml|markdown|eslintrc.json)$/i
+const regexf = /(LICENSE|Makefile|tests?|__tests?__|AUTHORS?|karma.conf.js|jest.config.js)$/i
+const regexe = /\.((bash|eslint|vim|jshint|nvm|prettier)rc|(eslint|npm)ignore|editorconfig|md|ya?ml|markdown|eslintrc.json|cache|circleci|grunt|eslintcache|flowconfig)$/i
 
 // If you didn't write target folder
 if (process.argv.length <= 2) {

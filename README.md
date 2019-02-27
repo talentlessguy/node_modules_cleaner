@@ -8,9 +8,9 @@ Cleans node_modules from non code files (e.g. README.md).
 
 | Package Name | `node_modules` before | `node_modules` after |
 |--------------|----------------------|-----------------------|
-| create-react-app@2.1.5 | 101 Mb | 84 Mb |
+| create-react-app@2.1.5 | 101 Mb | 85.74 Mb |
 | koa@2.7 | 737.30 Kb | 420.88 Kb |
-| express@4.6.14 | 1548.30 Kb | 971.91 Kb
+| express@4.6.14 | 1548.30 Kb | 971.91 Kb |
 
 ## Installation
 

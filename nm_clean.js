@@ -1,55 +1,62 @@
 #!/usr/bin/env node
 
-const { cyan, yellow } = require('chalk')
+// Import or destruct stuff
+const { cyan, yellow, red } = require('chalk')
 const { existsSync, unlinkSync } = require('fs')
-const { fsizeSync, walkSync, rmdirsSync } = require('nodejs-fs-utils')
+const { rmdirsSync, walkSync, fsizeSync } = require('nodejs-fs-utils')
+const { join } = require('path')
 const { log, error } = console
-const { chdir, exit, argv } = process
+const { chdir, exit } = process
+const { argv } = require('yargs')
 
-const dir = argv[2]
-let isSilent = true
+const dir = process.argv[2]
 
-if (argv[3] === '-p') isSilent = false
+const dirSize = () => {
+    let size = fsizeSync('./') / 1024
 
-const dirSize = () => parseInt(fsizeSync('./') / 1024)
+    if (size > 10000) {
+        return `${(size / (1024)).toFixed(2)} Mb.`
+    } else {
+        return `${(size).toFixed(2)} Kb.`
+    }
+}
 
-const regex = /((LICEN(C|S)E|Makefile|tests?|__tests?__|AUTHORS)|(\.(bash|eslint|vim)rc)|(\.(eslint|npm)ignore)|(\.editorconfig))$/i
+// Decided to separate regexps not to get confused
+const regexf = /(LICENSE|Makefile|tests?|__tests?__|AUTHORS?|karma.conf.js)$/i
+const regexe = /\.((bash|eslint|vim|jshint|nvm)rc|(eslint|npm)ignore|editorconfig|md|ya?ml|markdown|eslintrc.json)$/i
 
+// If you didn't write target folder
 if (process.argv.length <= 2) {
     log(`
     Usage: ${cyan('nm_clean <directory>')}
 
     Arguments:
 
-    nm_clean <directory> -p - Displays deletion process.
+    nm_clean <directory> -a - Displays deletion process.
     `)
 } else {
+    // If there's no node_modules directory
     if (!existsSync(`${dir}/node_modules`)) {
         error(
-            yellow(`
+            red(`
         node_modules directory can't be found.
         Please run ${cyan('npm i')} in your project.
             `)
         )
         exit()
     }
-    
-    chdir(`${dir}/node_modules`)
-    
-    log(dirSize() > 10000 ? `Before: ${yellow(parseInt(dirSize() / 1024))} Mb` : `Before: ${yellow(dirSize())} Kb`) 
 
-    walkSync('./', {
-        skipErrors: false,
-        logErrors: false,
-        stackPushEnd: true
-    }, (err, path, stats, next) => {
-            if (!err && regex.test(path)) {
-                isSilent ? null : log(`Deleting ${path}...`)
-                stats.isDirectory() ? rmdirsSync(path) : unlinkSync(path)
-            } else {
-                next()
-            }
-        })
-    
-        log(dirSize() > 10000 ? `After: ${yellow(parseInt(dirSize() / 1024))} Mb` : `After: ${yellow(dirSize())} Kb`)
+    chdir(`${dir}/node_modules`);
+
+    log(`Before: ${yellow(dirSize())}`)
+
+    walkSync('./', (err, path, stats, next, cache) => {
+        if (err) throw err
+        else if (regexe.test(path) || regexf.test(path)) {
+            if (argv.a) log(path)
+            stats.isDirectory() ? rmdirsSync(path) : unlinkSync(path)
+        } else next()
+    })
+
+    log(`After: ${cyan(dirSize())}`)
 }

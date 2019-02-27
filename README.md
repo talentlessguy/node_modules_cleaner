@@ -8,14 +8,15 @@ Cleans node_modules from non code files (e.g. README.md).
 
 | Package Name | `node_modules` before | `node_modules` after |
 |--------------|----------------------|-----------------------|
-|create-react-app@2.1.5 | 101 Mb | 98 Mb |
-| koa@2.7 | 772 Kb | 720 Kb |
+| create-react-app@2.1.5 | 101 Mb | 84 Mb |
+| koa@2.7 | 737.30 Kb | 420.88 Kb |
+| express@4.6.14 | 1548.30 Kb | 971.91 Kb
 
 ## Installation
 
 Tested on versions:
-npm: 6.4.1
-node: 11.4.0
+yarn: 1.13
+node: 11.10
 
 I'm not sure if nm_clean works on older versions, so please update to latest or use these versions.
 
@@ -68,6 +69,8 @@ __and some more in the future...__
 
 - [x] Create nm_clean
 - [x] Also remove directories
+- [ ] Add timers to count how many seconds it took to clean
+- [ ] Make everything async for better perfomance
 - [ ] Publish the package
 - [ ] Create plugin for Gulp
 - [ ] Add more file extensions

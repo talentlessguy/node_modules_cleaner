@@ -18,8 +18,6 @@ Tested on versions:
 yarn: 1.13
 node: 11.10
 
-I'm not sure if nm_clean works on older versions, so please update to latest or use these versions.
-
 ```sh
 npm i -g nm_clean
 
@@ -37,14 +35,11 @@ nm_clean <project_folder>
 
 ```sh
 
-# Koa
-npm run test:koa
-
-# Express
-npm run test:express
-
-# FS Extra
-npm run test:fs-extra
+mkdir nm_clean-demo
+cd nm_clean-demo
+npm init -y
+npm i koa
+nm_clean ./ -a
 ```
 
 Demo uses `koa`, `express` and `fs-extra` packages for demonstration.
@@ -62,6 +57,7 @@ Demo uses `koa`, `express` and `fs-extra` packages for demonstration.
 * Makefile
 * Tests and example directories
 * YAML files, for example travis.yml
+* Unnesesary config files such as .editorconfig
 
 __and some more in the future...__
 
@@ -72,5 +68,5 @@ __and some more in the future...__
 - [ ] Add timers to count how many seconds it took to clean
 - [ ] Make everything async for better perfomance
 - [ ] Publish the package
-- [ ] Create plugin for Gulp
+- [ ] Create plugin for Gulp & Webpack
 - [ ] Add more file extensions

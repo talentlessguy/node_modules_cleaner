@@ -1,6 +1,6 @@
 {
   "name": "nm_cleaner",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Cleans node_modules from non code files.",
   "main": "nm_clean.js",
   "bin": {

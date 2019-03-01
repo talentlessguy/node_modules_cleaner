@@ -49,8 +49,6 @@ npm i koa
 nm_clean ./ -a
 ```
 
-Demo uses `koa`, `express` and `fs-extra` packages for demonstration.
-
 ## How it works
 
 **nm_clean** goes recursively through node_modules, then picks unnessesary files and deletes them. Yes, so simple.
@@ -72,8 +70,8 @@ __and some more in the future...__
 
 - [x] Create nm_clean
 - [x] Also remove directories
+- [x] Publish the package
 - [ ] Add timers to count how many seconds it took to clean
 - [ ] Make everything async for better perfomance
-- [x] Publish the package
 - [ ] Create plugin for Gulp & Webpack
 - [ ] Add more file extensions

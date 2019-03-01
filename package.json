@@ -1,5 +1,5 @@
 {
-  "name": "nm_cleaner",
+  "name": "nm_clean",
   "version": "1.0.4",
   "description": "Cleans node_modules from non code files.",
   "main": "nm_clean.js",

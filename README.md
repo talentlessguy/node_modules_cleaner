@@ -19,22 +19,29 @@ yarn: 1.13
 node: 11.10
 
 ```sh
-npm i -g nm_clean
+npm i -g nm_cleaner
 
 # or
-yarn global add nm_clean
+yarn global add nm_cleaner
 ```
 
 ## Usage
+
+Just clean the node_modules in a project directory.
 
 ```sh
 nm_clean <project_folder>
 ```
 
+Show files that are deleted.
+
+```sh
+nm_clean <project_folder> -a
+```
+
 ## Demo
 
 ```sh
-
 mkdir nm_clean-demo
 cd nm_clean-demo
 npm init -y
@@ -67,6 +74,6 @@ __and some more in the future...__
 - [x] Also remove directories
 - [ ] Add timers to count how many seconds it took to clean
 - [ ] Make everything async for better perfomance
-- [ ] Publish the package
+- [x] Publish the package
 - [ ] Create plugin for Gulp & Webpack
 - [ ] Add more file extensions

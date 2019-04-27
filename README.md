@@ -2,7 +2,7 @@
 
 Cleans node_modules from non code files (e.g. README.md).
 
-[WARNING] This utility is unstable and not production-ready.
+A very useful too when transfering the project to offline environment.
 
 ## Cleaning Results
 

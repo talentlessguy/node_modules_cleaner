@@ -1,4 +1,4 @@
-# NM_Cleaner :recycle:
+# NM_Cleaner 🧹
 
 Cleans node_modules from non code files (e.g. README.md).
 

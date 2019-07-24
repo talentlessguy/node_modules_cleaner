@@ -2,7 +2,7 @@
 
 Cleans node_modules from non code files (e.g. README.md).
 
-A very useful too when transfering the project to offline environment.
+A very useful tool when transfering the project to offline environment.
 
 ## Cleaning Results
 
@@ -14,9 +14,10 @@ A very useful too when transfering the project to offline environment.
 
 ## Installation
 
-Tested on versions:
-yarn: 1.13
-node: 11.10
+### Requirements
+
+* node >= 11.1
+* yarn >= 1.13
 
 ```sh
 npm i -g nm_cleaner
